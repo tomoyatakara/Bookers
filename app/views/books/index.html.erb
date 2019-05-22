@@ -1,4 +1,5 @@
 <h3>Books</h3>
+<%= flash[:notice] %>
   <table>
   	<div>
 	  	<tr>
@@ -12,9 +13,9 @@
 	  		<tr>
 		  		<td><%= book.title %></td>
 		  		<td><%= book.body %></td>
-			  	<td><%= link_to 'Show', book_path(book.id),class:"show_#{book}" %></td>
-			  	<td><%= link_to 'edit', edit_book_path(book.id),class:"edit_#{book}" %></td>
-			  	<td><%= link_to 'Destroy', books_path,class:"destroy_#{book}" %></td>
+			  	<td><%= link_to 'Show', book_path(book.id), class: "show_#{book.id}" %></td>
+			  	<td><%= link_to 'edit', edit_book_path(book.id), class: "edit_#{book.id}" %></td>
+			  	<td><%= link_to 'Destroy', book_path(book.id), method: :delete, class: "destroy_#{book.id}" %></td>
 	  		</tr>
 	  	<% end %>
 	</div>
@@ -25,10 +26,10 @@
 <%= form_for(@book) do |f| %>
 
   <h4>Title</h4>
-  <%= f.text_field :title, class:"book_title" %>
+  <%= f.text_field :title, class: "book_title" %>
 
   <h4>body</h4>
-  <%= f.text_area :body, class:"book_body" %>
+  <%= f.text_area :body, class: "book_body" %>
 
   <%= f.submit 'Create Book' %>
 
